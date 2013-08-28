@@ -1,7 +1,7 @@
 Rmaxmind
 ========
 
-Pure R implementation of (legacy) MaxMind IP Geolocation data 
+Pure R implementation for reading and processing (legacy) MaxMind IP Geolocation data 
 
 
 While not a full-on R package, the routines in maxmind.R will enable the user to
