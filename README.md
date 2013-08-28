@@ -10,11 +10,13 @@ While not a full-on R package, the routines in maxmind.R will enable the user to
 - perform ASN, CC & City queries
 - optionally cache results (provided you are using redis) IP geolocation
 
-I'll _eventually_ convert this to a package once the book : http://amzn.to/sudabook : that @jayjacobs & I are writing comes out :-)
+I'll _eventually_ convert this to a package once the book : http://amzn.to/sudabook : that @jayjacobs & I 
+are writing comes out :-)
 
 Please direct all inquiries via github or to @hrbrmstr
 
-Simplest way to use this is to clone the repository, read the examples (everyting after "TEST") then blow away the comments and start using the code.
+Simplest way to use this is to clone the repository, read the examples (everyting after "TEST") then blow away
+the everything past said "TEST" comment and start using the code.
 
 It requires:
 
