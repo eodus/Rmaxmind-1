@@ -24,8 +24,6 @@ It requires:
 - <code>library(bitops)</code>
 - <code>library(bit64)</code>
 - <code>library(rredis)</code>
-- <code>library(foreach)</code>
-- <code>library(iterators)</code>
 
 Basic usage is to initialize the library and a connection to redis:
 
