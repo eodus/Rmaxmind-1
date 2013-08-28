@@ -117,6 +117,8 @@ asn.ip <- function(ip, use.redis=TRUE) {
 }
 
 # initializes the maxmind asn lookup data table
+# if you set "refresh" to "TRUE" it will re-download the
+# data file, so be kind to maxmind
 # NOTE: sets global variable asn.dt
 maxmind.asn <- function(refresh=FALSE) {
   
@@ -145,6 +147,8 @@ maxmind.asn <- function(refresh=FALSE) {
 }
 
 # initializes the maxmind country lookup data table
+# if you set "refresh" to "TRUE" it will re-download the
+# data file, so be kind to maxmind
 # NOTE: only returns country codes at the moment
 # NOTE: Sets global variable "geo.cc.dt"
 maxmind.cc <- function(refresh=FALSE) {
@@ -175,6 +179,8 @@ maxmind.cc <- function(refresh=FALSE) {
 }
 
 # initializes the maxmind city lookup data tables
+# if you set "refresh" to "TRUE" it will re-download the
+# data file, so be kind to maxmind
 # NOTE: Sets global variables geo.blocks.dt & geo.location.dt
 maxmind.city <- function(refresh=FALSE) {
   
@@ -213,6 +219,8 @@ maxmind.city <- function(refresh=FALSE) {
 
 # using alienvault data soley for testing since it has location
 # data coded done for us and we can validate our findings
+# if you set "refresh" to "TRUE" it will re-download the
+# data file, so be kind to alienvault
 # sets global variable av.dt
 av.reputation.dt <- function(refresh=FALSE) {
   
