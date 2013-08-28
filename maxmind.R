@@ -27,6 +27,7 @@ library(data.table)
 library(bitops)
 library(bit64)
 library(rredis)
+library(bit64)
 
 # This product includes GeoLite data created by MaxMind, available from
 # http://dev.maxmind.com/geoip/legacy/geolite/
@@ -204,7 +205,7 @@ maxmind.city <- function(refresh=FALSE) {
   system(sprintf("sed -i'' -e 1,1d %s",mm.locationSource))
   
   geo.blocks.dt <<- fread(mm.blockSource, sep=",",header=TRUE)
-  geo.location.dt <<- fread(mm.blockSource, sep=",",header=TRUE)
+  geo.location.dt <<- fread(mm.locationSource, sep=",",header=TRUE)
   
   # make it even speedier
   setkey(geo.blocks.dt,startIpNum)
