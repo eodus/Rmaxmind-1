@@ -27,8 +27,6 @@ library(data.table)
 library(bitops)
 library(bit64)
 library(rredis)
-library(foreach)
-library(iterators)
 
 # This product includes GeoLite data created by MaxMind, available from
 # http://dev.maxmind.com/geoip/legacy/geolite/
