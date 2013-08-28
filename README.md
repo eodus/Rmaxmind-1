@@ -22,8 +22,8 @@ It requires:
 
 - <code>library(data.table)</code>
 - <code>library(bitops)</code>
-- <code>library(bit64)</code>
 - <code>library(rredis)</code>
+- <code>library(bit64)</code>
 
 Basic usage is to initialize the library and a connection to redis:
 
