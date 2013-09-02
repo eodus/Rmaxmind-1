@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rmaxmind by hrbrmstr</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Rmaxmind</h1>
+        <p>Pure R implementation of (legacy) MaxMind IP Geolocation data </p>
+
+        <p class="view"><a href="https://github.com/hrbrmstr/Rmaxmind">View the Project on GitHub <small>hrbrmstr/Rmaxmind</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/hrbrmstr/Rmaxmind/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/hrbrmstr/Rmaxmind/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/hrbrmstr/Rmaxmind">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="rmaxmind" class="anchor" href="#rmaxmind"><span class="octicon octicon-link"></span></a>Rmaxmind</h1>
+
+<p>Pure R implementation for reading and processing (legacy) MaxMind IP Geolocation data </p>
+
+<p>While not a full-on R package, the routines in maxmind.R will enable the user to</p>
+
+<ul>
+<li>download the MaxMind CSV data sets (so, the <em>legacy</em> data format)</li>
+<li>perform ASN, CC &amp; City queries</li>
+<li>optionally cache results (provided you are using redis) IP geolocation</li>
+</ul><p>I'll <em>eventually</em> convert this to a package once the book : <a href="http://amzn.to/sudabook">http://amzn.to/sudabook</a> : that <a href="https://github.com/jayjacobs" class="user-mention">@jayjacobs</a> &amp; I 
+are writing comes out :-)</p>
+
+<p>Please direct all inquiries via github or to <a href="https://github.com/hrbrmstr" class="user-mention">@hrbrmstr</a></p>
+
+<p>Simplest way to use this is to clone the repository, read the examples (everyting after "TEST") then blow away
+the everything past said "TEST" comment and start using the code.</p>
+
+<p>It requires:</p>
+
+<ul>
+<li><code>library(data.table)</code></li>
+<li><code>library(bitops)</code></li>
+<li><code>library(rredis)</code></li>
+<li><code>library(bit64)</code></li>
+</ul><p>Basic usage is to initialize the library and a connection to redis:</p>
+
+<pre><code>maxmind.asn()
+maxmind.cc()
+maxmind.city()
+redisConnect()
+</code></pre>
+
+<p>and then geocode all the things:</p>
+
+<pre><code>print(asn.ip("5.135.240.45"))
+print(cc.ip("5.135.240.45"))
+print(city.geo.ip("5.135.240.45"))
+</code></pre>
+
+<p>NOTE that you can geocode a whole list of IPs pretty easily:</p>
+
+<pre><code>q &lt;- data.frame(matrix(sapply(list.of.ip.addresses, function(x) {
+  c(x, cc.geo.ip(x))
+}),ncol=2,byrow=TRUE))
+colnames(q) &lt;- c("IP","CC")
+</code></pre>
+
+<p>It relies on redis for wicked fast speed (well, after the initial cache miss and fill).
+If you don't want to use redis, pass "FALSE" to the maxmind.XXX init routines and omit 
+the call to redisConnect().</p>
+
+<p>Given that MaxMind updates their free files each month, it might be a good idea to invalidate
+the redis cache and re-build it on that same frequency.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/hrbrmstr">hrbrmstr</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
